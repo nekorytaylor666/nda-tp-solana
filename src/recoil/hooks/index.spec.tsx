@@ -11,42 +11,42 @@ import { useCounter } from "./useCounter";
  */
 
 describe("Recoil useCounter Hook", () => {
-    it("should set initial value to 0", async () => {
-        const { result } = renderHook(() => useCounter(), {
-            wrapper: AllTheProviders,
-        });
-        const [count] = result.current;
+  it("should set initial value to 0", async () => {
+    const { result } = renderHook(() => useCounter(), {
+      wrapper: AllTheProviders,
+    });
+    const [count] = result.current;
 
-        expect(count).toEqual(0);
+    expect(count).toEqual(0);
+  });
+
+  it("should increment counter by 1", async () => {
+    const { result } = renderHook(() => useCounter(), {
+      wrapper: AllTheProviders,
+    });
+    const [_, { increase }] = result.current;
+
+    act(() => {
+      increase();
     });
 
-    it("should increment counter by 1", async () => {
-        const { result } = renderHook(() => useCounter(), {
-            wrapper: AllTheProviders,
-        });
-        const [_, { increase }] = result.current;
+    const [count] = result.current;
 
-        act(() => {
-            increase();
-        });
+    expect(count).toBe(1);
+  });
 
-        const [count] = result.current;
+  it("should decrement counter by 1", async () => {
+    const { result } = renderHook(() => useCounter(), {
+      wrapper: AllTheProviders,
+    });
+    const [_, { decrease }] = result.current;
 
-        expect(count).toBe(1);
+    act(() => {
+      decrease();
     });
 
-    it("should decrement counter by 1", async () => {
-        const { result } = renderHook(() => useCounter(), {
-            wrapper: AllTheProviders,
-        });
-        const [_, { decrease }] = result.current;
+    const [count] = result.current;
 
-        act(() => {
-            decrease();
-        });
-
-        const [count] = result.current;
-
-        expect(count).toBe(-1);
-    });
+    expect(count).toBe(-1);
+  });
 });

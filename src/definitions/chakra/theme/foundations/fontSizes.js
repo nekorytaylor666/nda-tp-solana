@@ -1,4 +1,7 @@
 export default {
-    lg: "18px",
-    "5xl": "46px",
+  "2xl": "24px",
+  xl: "18px",
+  lg: "16px",
+  md: "14px",
+  sm: "12px",
 };

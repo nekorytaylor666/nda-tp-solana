@@ -9,6 +9,6 @@ import { Atoms } from "@recoil/constants";
  */
 
 export const counter = atom({
-    key: Atoms.Counter,
-    default: 0,
+  key: Atoms.Counter,
+  default: 0,
 });

@@ -5,8 +5,13 @@ export type IButton = ButtonProps;
 
 export const Button: React.FC<IButton> = ({ ...rest }) => {
   return (
-    <div>
-      <BaseButton {...rest} data-testid="btn" />
-    </div>
+    <BaseButton
+      bg="primaryBlue"
+      textColor={"white"}
+      fontSize="lg"
+      fontWeight={"bold"}
+      {...rest}
+      data-testid="btn"
+    />
   );
 };

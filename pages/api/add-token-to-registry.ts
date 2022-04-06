@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         name: forkName,
       },
     } = repoFork;
-    git.pull("origin", "main", {});
+    await git.pull("origin", "main", {});
     const usersRemote = `${forkOwnerLogin}/${forkName}`;
     const remoteAlreadyExist = (await git.getRemotes()).filter(
       (remote) => remote.name !== usersRemote,

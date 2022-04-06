@@ -27,32 +27,6 @@ import { mintTo } from "src/lib/solana/spl-token/mintTo";
 import { useToast } from "@chakra-ui/react";
 import { useClipboard } from "@chakra-ui/react";
 
-export const SendOneLamportToRandomAddress: FC = () => {
-  const { connection } = useConnection();
-  const { publicKey, sendTransaction } = useWallet();
-
-  const onClick = useCallback(async () => {
-    if (!publicKey) throw new WalletNotConnectedError();
-
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: publicKey,
-        toPubkey: Keypair.generate().publicKey,
-        lamports: 1,
-      }),
-    );
-
-    const signature = await sendTransaction(transaction, connection);
-
-    await connection.confirmTransaction(signature, "processed");
-  }, [publicKey, sendTransaction, connection]);
-
-  return (
-    <Button onClick={onClick} disabled={!publicKey}>
-      Create token
-    </Button>
-  );
-};
 const Home: React.FC = () => {
   const { connection } = useConnection();
   const wallet = useWallet();

@@ -50,7 +50,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       "utf8",
     );
 
-    git
+    await git
       .add(["src/tokens/solana.tokenlist.json"])
       .commit(`added token to registry ${newToken.symbol}`)
       .push(usersRemote, newBranch)
@@ -63,7 +63,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           title: `Add token to registry ${newToken.symbol}`,
         });
       });
-    await git.checkoutBranch("master", "origin/main");
+    await git.checkoutBranch("main", "origin/main");
 
     res.status(200).json("success");
   } else {

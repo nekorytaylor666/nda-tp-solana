@@ -63,6 +63,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           title: `Add token to registry ${newToken.symbol}`,
         });
       });
+    await git.checkoutBranch("main", "origin/main");
 
     res.status(200).json("success");
   } else {
